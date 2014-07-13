@@ -5,6 +5,7 @@ module.exports = function ( grunt ) {
    * in `package.json` when you do `npm install` in this directory.
    */
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -148,6 +149,16 @@ module.exports = function ( grunt ) {
             expand: true
           }
         ]
+      }
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: ['build', 'www-root'],
+          livereload: true
+        }
       }
     },
 
@@ -564,6 +575,10 @@ module.exports = function ( grunt ) {
    */
   grunt.registerTask( 'compile', [
     'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+  ]);
+
+  grunt.registerTask( 'serve', [
+    'connect:server', 'watch'
   ]);
 
   /**
