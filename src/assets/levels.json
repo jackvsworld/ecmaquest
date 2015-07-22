@@ -1,0 +1,10 @@
+[
+  {
+    "name": "town",
+    "text": "Town",
+    "image": "images/maps/town.png",
+    "grid": "maps/town.txt",
+    "width": 32,
+    "height": 28
+  }
+]
